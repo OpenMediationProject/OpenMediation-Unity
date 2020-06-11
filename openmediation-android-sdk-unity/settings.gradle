@@ -1,0 +1,6 @@
+rootProject.name = 'Openmediation-unity-wrappers'
+
+include ':openmediation-android'
+project(':openmediation-android').projectDir = file('../openmediation-android')
+
+include ':openmediation-android:om-android-sdk'
