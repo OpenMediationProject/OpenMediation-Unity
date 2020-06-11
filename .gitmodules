@@ -1,0 +1,6 @@
+[submodule "openmediation-android"]
+	path = openmediation-android
+	url = https://github.com/AdTiming/OpenMediation-Android
+[submodule "openmediation-ios"]
+	path = openmediation-ios
+	url = https://github.com/AdTiming/OpenMediation-iOS
