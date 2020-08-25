@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+    <unityversion>1.3.0</unityversion>
+    <androidPackages>
+    </androidPackages>
+    <iosPods>
+        <iosPod name="OpenMediation/TencentAdAdapter" version="1.3.2">
+        </iosPod>
+        <iosPod name="GDTMobSDK" version="4.11.8">
+        </iosPod>
+    </iosPods>
+</dependencies>

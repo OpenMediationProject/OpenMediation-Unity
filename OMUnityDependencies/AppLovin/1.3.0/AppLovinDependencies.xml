@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+    <unityversion>1.3.0</unityversion>
+    <androidPackages>
+        <androidPackage spec="com.adtiming.adapters.om:applovin:1.3.0@aar">
+            <repositories>
+                <repository>https://maven.google.com/</repository>
+            </repositories>
+        </androidPackage>
+        <androidPackage spec="com.applovin:applovin-sdk:9.13.1">
+            <repositories>
+                <repository>https://maven.google.com/</repository>
+            </repositories>
+        </androidPackage>
+    </androidPackages>
+    <iosPods>
+        <iosPod name="OpenMediation/AppLovinAdapter" version="1.3.2">
+            <sources>
+                <source>https://github.com/CocoaPods/Specs</source>
+            </sources>
+        </iosPod>
+        <iosPod name="AppLovinSDK" version="6.13.0">
+            <sources>
+                <source>https://github.com/CocoaPods/Specs</source>
+            </sources>
+        </iosPod>
+    </iosPods>
+</dependencies>
+

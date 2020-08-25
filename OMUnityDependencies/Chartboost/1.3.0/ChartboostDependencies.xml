@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+    <unityversion>1.3.0</unityversion>
+    <androidPackages>
+        <androidPackage spec="com.adtiming.adapters.om:chartboost:3.3.0@aar">
+            <repositories>
+                <repository>https://maven.google.com/</repository>
+            </repositories>
+        </androidPackage>
+        <androidPackage spec="com.chartboost:chartboost-sdk:8.0.2">
+            <repositories>
+                <repository>https://chartboostmobile.bintray.com/Chartboost</repository>
+            </repositories>
+        </androidPackage>
+    </androidPackages>
+    <iosPods>
+        <iosPod name="OpenMediation/ChartboostAdapter" version="1.3.2">
+            <sources>
+                <source>https://github.com/CocoaPods/Specs</source>
+            </sources>
+        </iosPod>
+        <iosPod name="ChartboostSDK" version="8.2.0">
+            <sources>
+                <source>https://github.com/CocoaPods/Specs</source>
+            </sources>
+        </iosPod>
+    </iosPods>
+</dependencies>

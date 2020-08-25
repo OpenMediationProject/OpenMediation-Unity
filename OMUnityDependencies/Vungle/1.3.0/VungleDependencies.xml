@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+    <unityversion>1.3.0</unityversion>
+    <androidPackages>
+        <androidPackage spec="com.adtiming.adapters.om:vungle:1.3.0@aar">
+            <repositories>
+                <repository>https://maven.google.com/</repository>
+            </repositories>
+        </androidPackage>
+        <androidPackage spec="com.vungle:publisher-sdk-android:6.5.3">
+            <repositories>
+                <repository>https://maven.google.com/</repository>
+            </repositories>
+        </androidPackage>
+    </androidPackages>
+    <iosPods>
+        <iosPod name="OpenMediation/VungleAdapter" version="1.3.2">
+            <sources>
+                <source>https://github.com/CocoaPods/Specs</source>
+            </sources>
+        </iosPod>
+        <iosPod name="VungleSDK-iOS" version="6.7.0">
+            <sources>
+                <source>https://github.com/CocoaPods/Specs</source>
+            </sources>
+        </iosPod>
+    </iosPods>
+</dependencies>
