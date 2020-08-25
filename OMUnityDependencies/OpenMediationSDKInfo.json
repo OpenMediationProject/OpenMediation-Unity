@@ -14,7 +14,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/OpenMediation/1.3.0/OpenMediationDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/OpenMediation/1.3.0/OpenMediationDependencies.xml",
                 "FileName":"OpenMediationDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -34,7 +34,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/AdTiming/1.3.0/AdTimingDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/AdTiming/1.3.0/AdTimingDependencies.xml",
                 "FileName":"AdTimingDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -54,7 +54,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/AdMob/1.3.0/AdMobDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/AdMob/1.3.0/AdMobDependencies.xml",
                 "FileName":"AdMobDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -74,7 +74,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/Facebook/1.3.0/FacebookDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/Facebook/1.3.0/FacebookDependencies.xml",
                 "FileName":"FacebookDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -94,7 +94,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/UnityAds/1.3.0/UnityAdsDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/UnityAds/1.3.0/UnityAdsDependencies.xml",
                 "FileName":"UnityAdsDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -114,7 +114,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/Vungle/1.3.0/VungleDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/Vungle/1.3.0/VungleDependencies.xml",
                 "FileName":"VungleDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -134,7 +134,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/AdColony/1.3.0/AdColonyDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/AdColony/1.3.0/AdColonyDependencies.xml",
                 "FileName":"AdColonyDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -154,7 +154,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/AppLovin/1.3.0/AppLovinDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/AppLovin/1.3.0/AppLovinDependencies.xml",
                 "FileName":"AppLovinDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -174,7 +174,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/MoPub/1.3.0/MoPubDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/MoPub/1.3.0/MoPubDependencies.xml",
                 "FileName":"MoPubDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -194,7 +194,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/Tapjoy/1.3.0/TapjoyDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/Tapjoy/1.3.0/TapjoyDependencies.xml",
                 "FileName":"TapjoyDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -214,7 +214,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/Chartboost/1.3.0/ChartboostDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/Chartboost/1.3.0/ChartboostDependencies.xml",
                 "FileName":"ChartboostDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -234,7 +234,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/TikTok/1.3.0/TikTokDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/TikTok/1.3.0/TikTokDependencies.xml",
                 "FileName":"TikTokDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -254,7 +254,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/Mintegral/1.3.0/MintegralDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/Mintegral/1.3.0/MintegralDependencies.xml",
                 "FileName":"MintegralDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -274,7 +274,7 @@
                 }
             },
             "Unity":{
-                "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/IronSource/1.3.0/IronSourceDependencies.xml",
+                "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/IronSource/1.3.0/IronSourceDependencies.xml",
                 "FileName":"IronSourceDependencies.xml",
                 "UnityAdapterVersion":"1.3.0"
             },
@@ -294,7 +294,7 @@
             }
         },
         "Unity":{
-            "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/Fyber/1.3.0/FyberDependencies.xml",
+            "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/Fyber/1.3.0/FyberDependencies.xml",
             "FileName":"FyberDependencies.xml",
             "UnityAdapterVersion":"1.3.0"
         },
@@ -308,7 +308,7 @@
             }
         },
         "Unity":{
-            "DownloadUrl":"https://github.com/AdTiming/OpenMediation-Unity/tree/master/OMUnityDependencies/TencentAds/1.3.0/TencentAdsDependencies.xml",
+            "DownloadUrl":"https://raw.githubusercontent.com/AdTiming/OpenMediation-Unity/master/OMUnityDependencies/TencentAds/1.3.0/TencentAdsDependencies.xml",
             "FileName":"TencentAdsDependencies.xml",
             "UnityAdapterVersion":"1.3.0"
         },
@@ -316,5 +316,5 @@
     }
 
 },
-    "Message":"*** OpenMediation SDK 1.3.2 Update **\r\nOpenMediation latest SDK for Unity is currently available in GitHub.\r\nAfter updating the SDK, youll need to update to the latest adapter versions, as well.\r\nTo download the new version, go to your Unity menu > OpenMediation > GitHub"
+    "Message":"*** OpenMediation SDK 1.3.0 Update **\r\nOpenMediation latest SDK for Unity is currently available in GitHub.\r\nAfter updating the SDK, youll need to update to the latest adapter versions, as well.\r\nTo download the new version, go to your Unity menu > OpenMediation > GitHub"
 }
