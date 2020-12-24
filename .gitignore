@@ -1,5 +1,5 @@
 *.iml
-.gradle
+.gradle/
 /local.properties
 *.idea
 *.iml
@@ -8,3 +8,6 @@
 /captures
 .externalNativeBuild
 .cxx
+gradlew
+gradle
+gradlew.bat

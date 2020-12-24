@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies><unityversion>2.0.0</unityversion><iosPods><iosPod name="OpenMediationHeliumAdapter" version="2.0.2"><sources><source>https://github.com/CocoaPods/Specs</source></sources></iosPod><iosPod name="ChartboostHelium" version="2.1.0"><sources><source>https://github.com/CocoaPods/Specs</source></sources></iosPod></iosPods></dependencies>

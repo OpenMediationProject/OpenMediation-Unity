@@ -7,9 +7,13 @@ import android.app.Activity;
 import android.text.TextUtils;
 
 import com.openmediation.sdk.InitCallback;
+import com.openmediation.sdk.InitConfiguration;
 import com.openmediation.sdk.OmAds;
 import com.openmediation.sdk.interstitial.InterstitialAd;
 import com.openmediation.sdk.interstitial.InterstitialAdListener;
+import com.openmediation.sdk.promotion.PromotionAd;
+import com.openmediation.sdk.promotion.PromotionAdListener;
+import com.openmediation.sdk.promotion.PromotionAdRect;
 import com.openmediation.sdk.utils.error.Error;
 import com.openmediation.sdk.utils.model.Scene;
 import com.openmediation.sdk.video.RewardedVideoAd;
@@ -40,12 +44,44 @@ public class OmBridge {
     private static final String EVENT_IS_CLICKED = "onInterstitialClicked";
     private static final String EVENT_IS_CLOSED = "onInterstitialClosed";
 
+    /*********Promotion**************/
+    private static final String EVENT_CP_AVAILABLE_CHANGE = "onPromotionAdAvailabilityChanged";
+    private static final String EVENT_CP_SHOWED = "onPromotionAdShowed";
+    private static final String EVENT_CP_SHOWED_FAILED = "onPromotionAdShowFailed";
+    private static final String EVENT_CP_CLICKED = "onPromotionAdClicked";
+    private static final String EVENT_CP_HIDDEN = "onPromotionAdHidden";
+
     public static void init(String appkey) {
-        OmAds.init(getActivity(), appkey, new InitListener());
+        OmAds.init(getActivity(), new InitConfiguration.Builder()
+                .appKey(appkey)
+                .build(), new InitListener());
+    }
+
+    public static void init(String appkey, String host) {
+        OmAds.init(getActivity(), new InitConfiguration.Builder()
+                .appKey(appkey)
+                .initHost(host)
+                .build(), new InitListener());
+    }
+
+    public static void init(String appkey, String host, String channel) {
+        OmAds.init(getActivity(), new InitConfiguration.Builder()
+                .appKey(appkey)
+                .initHost(host)
+                .channel(channel)
+                .build(), new InitListener());
     }
 
     public static boolean isInit() {
         return OmAds.isInit();
+    }
+
+    public static void sendAFConversionData(String conversionData) {
+        OmAds.sendAFConversionData(conversionData);
+    }
+
+    public static void sendAFDeepLinkData(String conversionData) {
+        OmAds.sendAFDeepLinkData(conversionData);
     }
 
     public static void Debug(boolean debug) {
@@ -118,7 +154,6 @@ public class OmBridge {
         return InterstitialAd.isReady();
     }
 
-
     public static void loadBanner(String placementId, int sizeType, int position) {
         BannerSingleTon.getInstance().loadBanner(getActivity(), placementId, sizeType, position);
     }
@@ -133,6 +168,34 @@ public class OmBridge {
 
     public static void hideBanner(String placementId) {
         BannerSingleTon.getInstance().hideBanner(placementId);
+    }
+
+    public static boolean isPromotionAdReady() {
+        return PromotionAd.isReady();
+    }
+
+    public static void showPromotionAd(int width, int height, float scaleX, float scaleY, float angle) {
+        PromotionAdRect rect = new PromotionAdRect();
+        rect.setWidth(width);
+        rect.setHeight(height);
+        rect.setScaleX(scaleX);
+        rect.setScaleY(scaleY);
+        rect.setAngle(angle);
+        PromotionAd.showAd(getActivity(), rect);
+    }
+
+    public static void showPromotionAd(String scene, int width, int height, float scaleX, float scaleY, float angle) {
+        PromotionAdRect rect = new PromotionAdRect();
+        rect.setWidth(width);
+        rect.setHeight(height);
+        rect.setScaleX(scaleX);
+        rect.setScaleY(scaleY);
+        rect.setAngle(angle);
+        PromotionAd.showAd(getActivity(), rect, scene);
+    }
+
+    public static void hidePromotionAd() {
+        PromotionAd.hideAd();
     }
 
     private static Activity getActivity() {
@@ -229,17 +292,46 @@ public class OmBridge {
         }
     }
 
+    private static class CpListener implements PromotionAdListener {
+
+        @Override
+        public void onPromotionAdAvailabilityChanged(boolean available) {
+            sendUnityEvent(EVENT_CP_AVAILABLE_CHANGE, String.valueOf(available));
+        }
+
+        @Override
+        public void onPromotionAdShowed(Scene scene) {
+            sendUnityEvent(EVENT_CP_SHOWED, scene != null ? scene.getN() : "");
+        }
+
+        @Override
+        public void onPromotionAdShowFailed(Scene scene, Error error) {
+            sendUnityEvent(EVENT_CP_SHOWED_FAILED, (scene != null ? scene.getN() : "").concat(error != null ? error.toString() : ""));
+        }
+
+        @Override
+        public void onPromotionAdHidden(Scene scene) {
+            sendUnityEvent(EVENT_CP_HIDDEN, scene != null ? scene.getN() : "");
+        }
+
+        @Override
+        public void onPromotionAdClicked(Scene scene) {
+            sendUnityEvent(EVENT_CP_CLICKED, scene != null ? scene.getN() : "");
+        }
+    }
+
     private static class InitListener implements InitCallback {
         @Override
         public void onSuccess() {
             sendUnityEvent(EVENT_SDK_INIT_SUCCESS);
             RewardedVideoAd.setAdListener(new RvListener());
             InterstitialAd.setAdListener(new IsListener());
+            PromotionAd.setAdListener(new CpListener());
         }
 
         @Override
         public void onError(Error result) {
-            String error = result != null ? result.toString() : "AdTiming init failed";
+            String error = result != null ? result.toString() : "OM init failed";
             sendUnityEvent(EVENT_SDK_INIT_FAILED, error);
         }
     }
