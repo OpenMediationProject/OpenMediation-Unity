@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies><unityversion>2.0.1</unityversion><iosPods><iosPod name="OpenMediationAdMobAdapter" version="2.0.3"><sources><source>https://github.com/CocoaPods/Specs</source></sources></iosPod><iosPod name="Google-Mobile-Ads-SDK" version="7.66.0"><sources><source>https://github.com/CocoaPods/Specs</source></sources></iosPod></iosPods></dependencies>

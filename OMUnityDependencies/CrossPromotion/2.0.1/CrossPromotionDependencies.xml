@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies><unityversion>2.0.1</unityversion><androidPackages><androidPackage spec="com.openmediation.adapters:crosspromotion:1.0.1@aar"><repositories><repository>https://maven.google.com/</repository></repositories></androidPackage><androidPackage spec="com.openmediation:crosspromotion-sdk:1.0.3"><repositories><repository>https://maven.google.com/</repository></repositories></androidPackage></androidPackages></dependencies>
