@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies><unityversion>2.0.1</unityversion><iosPods><iosPod name="OpenMediationAppLovinAdapter" version="2.0.2"><sources><source>https://github.com/CocoaPods/Specs</source></sources></iosPod><iosPod name="AppLovinSDK" version="6.14.11"><sources><source>https://github.com/CocoaPods/Specs</source></sources></iosPod></iosPods></dependencies>
