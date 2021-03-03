@@ -86,7 +86,7 @@ final class BannerSingleTon {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    bannerView.setVisibility(View.VISIBLE);
+                    mBannerContainer.setVisibility(View.VISIBLE);
                 }
             });
         }
@@ -102,7 +102,7 @@ final class BannerSingleTon {
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    bannerView.setVisibility(View.GONE);
+                    mBannerContainer.setVisibility(View.GONE);
                 }
             });
         }

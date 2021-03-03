@@ -6,6 +6,8 @@ package com.openmediation.sdk.unity;
 import android.app.Activity;
 import android.text.TextUtils;
 
+import com.openmediation.sdk.ImpressionData;
+import com.openmediation.sdk.ImpressionDataListener;
 import com.openmediation.sdk.InitCallback;
 import com.openmediation.sdk.InitConfiguration;
 import com.openmediation.sdk.OmAds;
@@ -50,6 +52,11 @@ public class OmBridge {
     private static final String EVENT_CP_SHOWED_FAILED = "onPromotionAdShowFailed";
     private static final String EVENT_CP_CLICKED = "onPromotionAdClicked";
     private static final String EVENT_CP_HIDDEN = "onPromotionAdHidden";
+
+
+    /*********ImpressionData*******/
+    private static final String EVENT_IMPRESSION_DATA = "onImpressionData";
+    private static final String EVENT_IMPRESSION_DATA_ERROR = "onImpressionDataError";
 
     public static void init(String appkey) {
         OmAds.init(getActivity(), new InitConfiguration.Builder()
@@ -198,7 +205,19 @@ public class OmBridge {
         PromotionAd.hideAd();
     }
 
-    private static Activity getActivity() {
+    public static void loadSplashAd(String placementId) {
+        SplashSingleTon.getInstance().loadSplashAd(placementId);
+    }
+
+    public static boolean isSplashAdReady(String placementId) {
+        return SplashSingleTon.getInstance().isSplashAdReady(placementId);
+    }
+
+    public static void showSplashAd(String placementId) {
+        SplashSingleTon.getInstance().showSplashAd(placementId);
+    }
+
+    public static Activity getActivity() {
         return UnityPlayer.currentActivity;
     }
 
@@ -320,6 +339,19 @@ public class OmBridge {
         }
     }
 
+
+    private static class ImpressionDataCallback implements ImpressionDataListener {
+
+        @Override
+        public void onImpression(Error error, ImpressionData impressionData) {
+            if (error != null) {
+                sendUnityEvent(EVENT_IMPRESSION_DATA_ERROR, error.toString());
+            } else {
+                sendUnityEvent(EVENT_IMPRESSION_DATA, impressionData != null ? impressionData.toString() : "");
+            }
+        }
+    }
+
     private static class InitListener implements InitCallback {
         @Override
         public void onSuccess() {
@@ -327,6 +359,7 @@ public class OmBridge {
             RewardedVideoAd.setAdListener(new RvListener());
             InterstitialAd.setAdListener(new IsListener());
             PromotionAd.setAdListener(new CpListener());
+            OmAds.addImpressionDataListener(new ImpressionDataCallback());
         }
 
         @Override
