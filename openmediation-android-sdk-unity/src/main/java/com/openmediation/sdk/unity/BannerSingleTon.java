@@ -6,6 +6,7 @@ package com.openmediation.sdk.unity;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -15,7 +16,9 @@ import com.openmediation.sdk.banner.AdSize;
 import com.openmediation.sdk.banner.BannerAd;
 import com.openmediation.sdk.banner.BannerAdListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 final class BannerSingleTon {
@@ -25,11 +28,11 @@ final class BannerSingleTon {
     private static final String EVENT_BANNER_FAILED = "onBannerLoadFailed";
     private static final String EVENT_BANNER_CLICKED = "onBannerClicked";
 
-    private Map<String, BannerAd> mBannerAds;
+    private final Map<String, BannerAd> mBannerAds;
 
     private FrameLayout mBannerContainer;
-    private Map<String, FrameLayout> mBannerViews;
-    private Handler mHandler;
+    private final Map<String, FrameLayout> mBannerViews;
+    private final Handler mHandler;
 
     private static final class BannerHolder {
         private static final BannerSingleTon INSTANCE = new BannerSingleTon();
@@ -59,10 +62,11 @@ final class BannerSingleTon {
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                if (mBannerContainer != null) {
-                    mBannerContainer.removeAllViews();
+                final FrameLayout bannerView = mBannerViews.get(placementId);
+                if (bannerView == null) {
+                    Log.d("Om-Unity", "Banner ad is not ready to destroy");
+                    return;
                 }
-
                 if (mBannerViews != null) {
                     mBannerViews.remove(placementId);
                 }
@@ -80,13 +84,13 @@ final class BannerSingleTon {
         synchronized (this) {
             final FrameLayout bannerView = mBannerViews.get(placementId);
             if (bannerView == null) {
-                Log.d("AdTiming-Unity", "Banner ad is not ready to display, please load before display");
+                Log.d("Om-Unity", "Banner ad is not ready to display, please load before display");
                 return;
             }
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    mBannerContainer.setVisibility(View.VISIBLE);
+                    bannerView.setVisibility(View.VISIBLE);
                 }
             });
         }
@@ -96,13 +100,13 @@ final class BannerSingleTon {
         synchronized (this) {
             final FrameLayout bannerView = mBannerViews.get(placemenId);
             if (bannerView == null) {
-                Log.d("AdTiming-Unity", "no ad need to be hide");
+                Log.d("Om-Unity", "no ad need to be hide");
                 return;
             }
             mHandler.post(new Runnable() {
                 @Override
                 public void run() {
-                    mBannerContainer.setVisibility(View.GONE);
+                    bannerView.setVisibility(View.GONE);
                 }
             });
         }
@@ -133,8 +137,6 @@ final class BannerSingleTon {
 
     private static AdSize getBannerSize(int sizeType) {
         switch (sizeType) {
-            case 0:
-                return AdSize.BANNER;
             case 1:
                 return AdSize.MEDIUM_RECTANGLE;
             case 2:
@@ -148,8 +150,8 @@ final class BannerSingleTon {
 
     private static class BannerAdsListener implements BannerAdListener {
 
-        private int mPosition;
-        private String mPlacementId;
+        private final int mPosition;
+        private final String mPlacementId;
 
 
         BannerAdsListener(String placementId, int position) {
@@ -159,24 +161,40 @@ final class BannerSingleTon {
 
         @Override
         public void onAdReady(View view) {
-            FrameLayout bannerView = (FrameLayout) view;
-            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                    FrameLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.gravity = mPosition == 1 ? Gravity.TOP : Gravity.BOTTOM;
-            getInstance().mBannerContainer.removeAllViews();
-            getInstance().mBannerContainer.addView(bannerView, layoutParams);
-            getInstance().mBannerViews.put(mPlacementId, bannerView);
-            OmBridge.sendUnityEvent(EVENT_BANNER_READY);
+            try {
+                FrameLayout bannerView = (FrameLayout) view;
+                FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
+                        FrameLayout.LayoutParams.WRAP_CONTENT);
+                if (getInstance().mBannerViews != null && getInstance().mBannerViews.containsKey(mPlacementId)) {
+                    FrameLayout frameLayout = getInstance().mBannerViews.get(mPlacementId);
+                    getInstance().mBannerViews.remove(mPlacementId);
+                    getInstance().mBannerContainer.removeView(frameLayout);
+                }
+                layoutParams.gravity = mPosition == 1 ? Gravity.TOP : Gravity.BOTTOM;
+//            getInstance().mBannerContainer.removeAllViews();
+                getInstance().mBannerContainer.addView(bannerView, layoutParams);
+                getInstance().mBannerViews.put(mPlacementId, bannerView);
+                OmBridge.sendUnityEvent(EVENT_BANNER_READY, mPlacementId);
+            } catch (Exception e) {
+                Log.e("OM-OmBridge", "Banner show failed: " + e.getMessage());
+            }
         }
 
         @Override
         public void onAdFailed(String error) {
-            OmBridge.sendUnityEvent(EVENT_BANNER_FAILED, error);
+            List<String> list = new ArrayList<>(2);
+            list.add(mPlacementId);
+            if (TextUtils.isEmpty(error)) {
+                list.add("");
+            } else {
+                list.add(error);
+            }
+            OmBridge.sendUnityEvent(EVENT_BANNER_FAILED, OmBridge.toJsonArray(list));
         }
 
         @Override
         public void onAdClicked() {
-            OmBridge.sendUnityEvent(EVENT_BANNER_CLICKED);
+            OmBridge.sendUnityEvent(EVENT_BANNER_CLICKED, mPlacementId);
         }
     }
 }

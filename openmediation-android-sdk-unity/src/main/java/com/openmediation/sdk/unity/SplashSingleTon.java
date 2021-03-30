@@ -94,7 +94,7 @@ public class SplashSingleTon {
         @Override
         public void onSplashAdFailed(String placementId, String error) {
             DeveloperLog.LogD("Unity plugin onSplashAdFailed : " + error);
-            OmBridge.sendUnityEvent(EVENT_SPLASH_LOAD_FAILED, placementId + " " + error);
+            OmBridge.sendUnityEvent(EVENT_SPLASH_LOAD_FAILED, placementId);
         }
 
         @Override
@@ -113,13 +113,13 @@ public class SplashSingleTon {
         public void onSplashAdShowFailed(String placementId, String error) {
             DeveloperLog.LogD("Unity plugin onSplashAdShowFailed ： " + error);
             getInstance().releaseSplash();
-            OmBridge.sendUnityEvent(EVENT_SPLASH_SHOW_FAILED, placementId + " " + error);
+            OmBridge.sendUnityEvent(EVENT_SPLASH_SHOW_FAILED, placementId);
         }
 
         @Override
         public void onSplashAdTick(String placementId, long millisUntilFinished) {
             DeveloperLog.LogD("Unity plugin onSplashAdTick");
-            OmBridge.sendUnityEvent(EVENT_SPLASH_TICKED, placementId + " :  " + millisUntilFinished);
+            OmBridge.sendUnityEvent(EVENT_SPLASH_TICKED, placementId);
         }
 
         @Override

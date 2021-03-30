@@ -16,11 +16,18 @@ import com.openmediation.sdk.interstitial.InterstitialAdListener;
 import com.openmediation.sdk.promotion.PromotionAd;
 import com.openmediation.sdk.promotion.PromotionAdListener;
 import com.openmediation.sdk.promotion.PromotionAdRect;
+import com.openmediation.sdk.utils.JsonUtil;
 import com.openmediation.sdk.utils.error.Error;
 import com.openmediation.sdk.utils.model.Scene;
 import com.openmediation.sdk.video.RewardedVideoAd;
 import com.openmediation.sdk.video.RewardedVideoListener;
 import com.unity3d.player.UnityPlayer;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.List;
+import java.util.Map;
 
 
 public class OmBridge {
@@ -217,6 +224,52 @@ public class OmBridge {
         SplashSingleTon.getInstance().showSplashAd(placementId);
     }
 
+    /**
+     * App defined user tag
+     */
+    public static void setCustomTag(String key, String value) {
+        OmAds.setCustomTag(key, value);
+    }
+
+    /**
+     * App defined user tag
+     */
+    public static void setCustomTag(String key, String[] values) {
+        OmAds.setCustomTag(key, values);
+    }
+
+    /**
+     * Remove app defined user tag
+     */
+    public static void removeCustomTag(String key) {
+        OmAds.removeCustomTag(key);
+    }
+
+    /**
+     * Returns the tags set by the user
+     * Returns null if not set
+     */
+    public static String getCustomTags() {
+        Map<String, Object> map = OmAds.getCustomTags();
+        JSONObject jsonObject = JsonUtil.convert(map);
+        if (jsonObject != null) {
+            return jsonObject.toString();
+        }
+        return null;
+    }
+
+    /**
+     * setUserId
+     * @param userId userId
+     */
+    public static void setUserId(String userId) {
+        OmAds.setUserId(userId);
+    }
+
+    public static String getUserId() {
+        return OmAds.getUserId();
+    }
+
     public static Activity getActivity() {
         return UnityPlayer.currentActivity;
     }
@@ -367,5 +420,16 @@ public class OmBridge {
             String error = result != null ? result.toString() : "OM init failed";
             sendUnityEvent(EVENT_SDK_INIT_FAILED, error);
         }
+    }
+
+    public static String toJsonArray(List<String> list) {
+        if (list == null || list.isEmpty()) {
+            return "";
+        }
+        JSONArray array = new JSONArray();
+        for (String re : list) {
+            array.put(re);
+        }
+        return array.toString();
     }
 }
